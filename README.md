@@ -8,8 +8,13 @@ Both [Ethminer](https://github.com/ethereum-mining/ethminer) and [Claymore](http
 
 ### How to use
 
+Make sure you have [NodeJS](https://nodejs.org/en/) installed
+
 ```javascript
 
+git clone https://github.com/vivanwin/ethmining_optimizer.git
+cd ethmining_optimizer
+npm i
 node index -miner ethminer,claymore 
 
 ``` 
