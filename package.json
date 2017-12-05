@@ -1,0 +1,16 @@
+{
+  "name": "ethminer",
+  "version": "1.0.0",
+  "description": "Simple script to find optimal mining parameter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vincent van Wingerden",
+  "license": "MIT",
+  "dependencies": {
+    "mailgun-js": "^0.13.1",
+    "request": "^2.83.0",
+    "simple-statistics": "^4.1.1"
+  }
+}
