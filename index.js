@@ -256,7 +256,7 @@ function sendMail(runId) {
     if (USEMALGUN) {
         try{
             const filepath = path.join(__dirname, `runresult-${runId}.json`);
-            
+            let  mailgun = require('mailgun-js')({ apiKey: MAILGUN_API_KEY, domain: MAILGUN_DOMAIN });
                     let data = {
                         from: 'Ming results',
                         to: MAILGUN_TO_EMAIL,
