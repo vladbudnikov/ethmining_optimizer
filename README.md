@@ -12,7 +12,7 @@ Make sure you have [NodeJS](https://nodejs.org/en/) installed
 
 ```javascript
 
-git clone https://github.com/vivanwin/ethmining_optimizer.git
+git clone https://github.com/vladbudnikov/ethmining_optimizer.git
 cd ethmining_optimizer
 npm i
 node index -miner ethminer,claymore 
