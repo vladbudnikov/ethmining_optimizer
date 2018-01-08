@@ -5,7 +5,7 @@ const stats = require('simple-statistics')
 
 
 //Const
-const ETH_WALLET = `0x8e9137Fa982C0Af6EF94D0f7A15dafaCB6EAb725`;
+const ETH_WALLET = `0xfff5eb47d1fb07550c9fb9788c7bece3570af227`;
 const ETH_FARMING_URL = `http://eth-eu.dwarfpool.com:80/${ETH_WALLET}`;
 const ETHMINER_PATH = './ethminer';
 const CLAYMORE_PATH = './claymore-10.10/EthDcrMiner64.exe';
@@ -212,12 +212,18 @@ function startMonitorClaymore(runNum) {
 function endRun() {
     if (currentMiner == 'ethminer') {
         //Kill all ethminer processes
-        let kill = spawn("taskkill", ['-F', '-IM', 'ethminer.exe']);
+		//Windows version
+        //let kill = spawn("taskkill", ['-F', '-IM', 'ethminer.exe']);
+		//Linux version
+		let kill = spawn('grep', ['ethminer']);
     } else if (currentMiner == 'claymore') {
         //Stop monitoring Claymore's web server
         clearInterval(intervalId)
         //Kill all claymore miner processes
-        let kill = spawn("taskkill", ['-F', '-IM', 'EthDcrMiner64.exe']);
+		//Windows version
+        //let kill = spawn("taskkill", ['-F', '-IM', 'EthDcrMiner64.exe']);
+		//Linux version
+		let kill = spawn('grep', ['EthDcrMiner64']);
     }
 
 }
