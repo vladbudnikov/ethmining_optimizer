@@ -13,10 +13,9 @@ Make sure you have [NodeJS](https://nodejs.org/en/) installed
 ```javascript
 
 git clone https://github.com/vladbudnikov/ethmining_optimizer.git
+sudo chmod -R a+rwx ethmining_optimizer/
 cd ethmining_optimizer
 npm i
-cd
-sudo chmod -R a+rwx ethmining_optimizer/
 node index -miner ethminer,claymore 
 
 ``` 
