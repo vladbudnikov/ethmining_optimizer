@@ -69,8 +69,11 @@ function main() {
             minerPath: resultTable[runNum].minerPath,
             miner: resultTable[runNum].miner
         });
-        currentMiner = resultTable[runNum].miner;
         runNum++;
+		console.log(resultTable[runNum].results[0]);
+
+		currentMiner = resultTable[runNum].miner;
+
         setTimeout(function () {
             console.log(`Stop current run`)
             endRun()
@@ -234,12 +237,12 @@ function logResult(result, run) {
     data = result.toString()
     if (data.indexOf('Speed') != -1) {
         let rate;
-        // remove first part
-        rate = data.split(":")[2]
-        // remove last part
-        rate = rate.split('Mh/s')[0]
-        rate = rate.split('Speed')[1]
-        rate = Number(rate)
+        
+		rate = data.split(" Mh/s")[0];
+        rate = rate.split('Speed ')[1];
+        //rate = Number(rate)
+		console.log(rate)
+		
         if (rate != 0) {
             miningInRun = true;
 
@@ -252,7 +255,7 @@ function logResult(result, run) {
 }
 
 function saveResult(cb) {
-    fs.writeFile(`./runresult-${runId}.json`, JSON.stringify(resultTable), (err, result) => {
+    fs.writeFile(`./runresults/runresult-${runId}.json`, JSON.stringify(resultTable), (err, result) => {
         cb(null, runId)
     })
 }
@@ -261,7 +264,7 @@ function saveResult(cb) {
 function sendMail(runId) {
     if (USEMALGUN) {
         try{
-            const filepath = path.join(__dirname, `runresult-${runId}.json`);
+            const filepath = path.join(__dirname, `runresults/runresult-${runId}.json`);
             let  mailgun = require('mailgun-js')({ apiKey: MAILGUN_API_KEY, domain: MAILGUN_DOMAIN });
                     let data = {
                         from: 'Ming results',
@@ -299,7 +302,7 @@ function createPossibilitiesEthminer() {
         },
         {
             parameter: '--cuda-grid-size',
-            possible: [32768, 65536]
+            possible: [32768, 65536, 131072]
         }
     ];
 
